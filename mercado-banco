@@ -1,0 +1,8 @@
+create database mercado;
+use mercado;
+
+create table marcas (
+	marca_id				int				primary key,
+	marca_nome				varchar(50)		NOT NULL,
+	marca_nacionalidade		varchar(50)
+);
