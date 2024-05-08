@@ -1,0 +1,42 @@
+
+package juntando;
+
+public class CRUD {
+    private int marca_id;
+    private String marca_nome;
+    private String marca_nacionalidade;
+
+   public CRUD(int marca_id, String marca_nome, String marca_nacionalidade){
+       this.marca_id = marca_id;
+       this.marca_nome = marca_nome;
+       this.marca_nacionalidade = marca_nacionalidade;
+   }
+    public int getMarca_id() {
+        return marca_id;
+    }
+
+    public void setMarca_id(int marca_id) {
+        this.marca_id = marca_id;
+    }
+
+    public String getMarca_nome() {
+        return marca_nome;
+    }
+
+
+    public void setMarca_nome(String marca_nome) {
+        this.marca_nome = marca_nome;
+    }
+
+    public String getMarca_nacionalidade() {
+        return marca_nacionalidade;
+    }
+
+
+    public void setMarca_nacionalidade(String marca_nacionalidade) {
+        this.marca_nacionalidade = marca_nacionalidade;
+    }
+    
+    public String 
+    
+}
