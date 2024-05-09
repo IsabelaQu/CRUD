@@ -24,17 +24,15 @@ public class Juntando {
                 CRUD marcas = new CRUD(marca_id, marca_nome, marca_nacionalidade);
                 
                 try {
-                        DataBaseUtils.insert(con, marcas.insert());               
-                } catch (SQLException e){
-                        e.printStackTrace();
-                }
+                        DataBaseUtils.insert(con, marcas.insert());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
     
     public static void main(String[] args) {
-        System.out.println("--- Conectando Java e MySQL ---");
-        
-        Scanner in = new Scanner(System.in);
-        
+        System.out.println("--- Marcas de um Mercado ---");
+       
         System.out.println("Usuario: ");
         String usuario = in.nextLine();
         
@@ -42,12 +40,12 @@ public class Juntando {
         String senha = in.nextLine();   
         
         try {
-            Connection conn = DataBaseUtils.getConnection("mercado","root", "facens");
-            System.out.println("Conectou :)");
-        } catch (Exception e){
-            System.out.println("Nao conectou :c");
-            e.printStackTrace();
+            con = DataBaseUtils.getConnection("Mercado","root", "facens"); 
+        } catch (ClassNotFoundException | SQLException e) {
+		e.printStackTrace();
         }
+        
+        cadastrar();
         
         in.close();
     }
