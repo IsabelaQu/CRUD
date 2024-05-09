@@ -1,7 +1,6 @@
-
 package juntando;
 
-public class CRUD {
+public class CRUD { //Marcas
     private int marca_id;
     private String marca_nome;
     private String marca_nacionalidade;
@@ -37,6 +36,8 @@ public class CRUD {
         this.marca_nacionalidade = marca_nacionalidade;
     }
     
-    public String 
-    
+    public String insert(){ //definir um método insert para a tabela de CRUD (Marcas)
+        return String.format("insert into Marcas values (%i, %s, %s);", this.marca_id, this.marca_nome, this.marca_nacionalidade);
+        
+    } 
 }
