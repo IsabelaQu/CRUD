@@ -1,43 +1,55 @@
+
 package juntando;
 
-public class CRUD { //Marcas
-    private int marca_id;
-    private String marca_nome;
-    private String marca_nacionalidade;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Scanner;
 
-   public CRUD(int marca_id, String marca_nome, String marca_nacionalidade){
-       this.marca_id = marca_id;
-       this.marca_nome = marca_nome;
-       this.marca_nacionalidade = marca_nacionalidade;
-   }
-    public int getMarca_id() {
-        return marca_id;
-    }
+public class Juntando {
+    private static Scanner in = new Scanner(System.in);
+    private static Connection con;
+    
+    public static void cadastrar() { 
+		System.out.print("marca_id: ");
+		int marca_id = in.nextInt();
+		in.nextLine(); //enter
 
-    public void setMarca_id(int marca_id) {
-        this.marca_id = marca_id;
-    }
-
-    public String getMarca_nome() {
-        return marca_nome;
-    }
-
-
-    public void setMarca_nome(String marca_nome) {
-        this.marca_nome = marca_nome;
-    }
-
-    public String getMarca_nacionalidade() {
-        return marca_nacionalidade;
-    }
-
-
-    public void setMarca_nacionalidade(String marca_nacionalidade) {
-        this.marca_nacionalidade = marca_nacionalidade;
+		System.out.print("marca_nome: ");
+		String marca_nome = in.nextLine();
+		
+		System.out.print("marca_nacionalidade: ");
+		String marca_nacionalidade = in.nextLine();
+		in.nextLine();
+                
+                CRUD marcas = new CRUD(marca_id, marca_nome, marca_nacionalidade);
+                
+                try {
+                        DataBaseUtils.insert(con, marcas.insert());               
+                } catch (SQLException e){
+                        e.printStackTrace();
+                }
     }
     
-    public String insert(){ //definir um método insert para a tabela de CRUD (Marcas)
-        return String.format("insert into Marcas values (%i, %s, %s);", this.marca_id, this.marca_nome, this.marca_nacionalidade);
+    public static void main(String[] args) {
+        System.out.println("--- Conectando Java e MySQL ---");
         
-    } 
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Usuario: ");
+        String usuario = in.nextLine();
+        
+        System.out.println("Senha: ");
+        String senha = in.nextLine();   
+        
+        try {
+            Connection conn = DataBaseUtils.getConnection("mercado","root", "facens");
+            System.out.println("Conectou :)");
+        } catch (Exception e){
+            System.out.println("Nao conectou :c");
+            e.printStackTrace();
+        }
+        
+        in.close();
+    }
+    
 }
